@@ -1,10 +1,15 @@
-function removeDuplicates(nums) {
-  let index = 0;
-  for (let i = 1; i < nums.length; i++) {
-    if (nums[i] !== nums[index]) {
-      index++;
-      nums[index] = nums[i];
-    }
+function removeNthFromEnd(head, n) {
+  const dummy = new ListNode(0);
+  dummy.next = head;
+  let first = dummy;
+  let second = dummy;
+  for (let i = 0; i <= n; i++) {
+    first = first.next;
   }
-  return index + 1;
+  while (first !== null) {
+    first = first.next;
+    second = second.next;
+  }
+  second.next = second.next.next;
+  return dummy.next;
 }
